@@ -1,0 +1,932 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+$white: #ffffff ;
+$gray: #666666;
+$red: #cc3333;
+
+li{
+  list-style: none;
+}
+
+button, button:active, button:focus {
+  outline: none !important;
+}
+
+.WrapStyle{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 0 0 30px 0;
+}
+
+.HeadStyle{
+  text-transform: uppercase;
+  font-family: "Overpass", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: $gray;
+
+  position: relative;
+  margin-bottom: 0;
+  padding: 30px 0 33px 0;
+
+  @media screen and (max-width: 767px){
+    font-size: 20px;
+  }
+}
+
+.HeadStyle:after {
+  content: '';
+  border-radius: 30px;
+  background-color: #666666;
+  display: inline-block;
+  width: 58px;
+  height: 3px;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+}
+
+.TextStyle{
+  padding: 30px 0 ;
+  color: $gray;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  font-family: "Overpass", sans-serif;
+  letter-spacing: 1px;
+
+  @media screen and (max-width: 767px){
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 425px){
+    font-size: 14px;
+  }
+}
+
+#header{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+
+  .header-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+
+    .header-logo {
+      & h1 {
+        color: $white;
+        font-size: 28px;
+        font-family: 'Overpass', sans-serif;
+        font-weight: 700px;
+        letter-spacing: 4px;
+        font-style: normal;
+        display: flex;
+        align-items: center;
+
+        @media screen and (max-width: 575px){
+          padding: 0 20px;
+        }
+      }
+    }
+
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & li{
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+
+      & a {
+        color: $white;
+        letter-spacing: 2px;
+        text-decoration: none;
+        transition: color 0.2s linear;
+        font-size: 18px;
+
+        @media screen and (max-width: 991px){
+          font-size: 16px;
+        }
+      }
+
+      @media screen and (max-width: 767px){
+        display: none;
+      }
+    }
+
+    .hamburger-menu {
+      display: none;
+
+      @media screen and (max-width: 767px){
+        display: block;
+
+        #menu__toggle {
+          opacity: 0;
+        }
+
+        #menu__toggle:checked ~ .menu__btn > span {
+          transform: rotate(45deg);
+        }
+
+        #menu__toggle:checked ~ .menu__btn > span::before {
+          top: 0;
+          transform: rotate(0);
+        }
+
+        #menu__toggle:checked ~ .menu__btn > span::after {
+          top: 0;
+          transform: rotate(90deg);
+        }
+
+        #menu__toggle:checked ~ .menu__box {
+          visibility: visible;
+          left: 0;
+        }
+
+        .menu__btn {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          width: 40px;
+          height: 25px;
+          cursor: pointer;
+          z-index: 1;
+        }
+
+        .menu__btn > span,
+        .menu__btn > span::before,
+        .menu__btn > span::after {
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          background-color: $white;
+          transition-duration: .25s;
+        }
+
+        .menu__btn > span::before {
+          content: '';
+          top: -10px;
+        }
+
+        .menu__btn > span::after {
+          content: '';
+          top: 10px;
+        }
+
+        .menu__box {
+          text-align: center;
+          display: block;
+          position: absolute;
+          visibility: hidden;
+          top: 0;
+          right: 100%;
+          width: 100%;
+          height: 100vh;
+          padding: 80px 0;
+          list-style: none;
+          background-color: rgb(0,0,0,0.9);
+          box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+          transition-duration: .25s;
+
+          .menu__item {
+            display: block;
+            padding: 20px 0;
+            color: $white;
+            font-family: "Overpass", sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            text-decoration: none;
+            transition-duration: .25s;
+            letter-spacing: 5px;
+
+            &:hover{
+              color: $red;
+              transition: color 0.2s linear;
+            }
+
+            @media screen and (max-width: 425px){
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#intro {
+  background: url("../img/Layer 10.png") center no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+
+  .intro-wrap {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    color: $white;
+
+    .intro-wrap--head {
+      font-size: 52px;
+      font-family: "Overpass", sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding-bottom: 20px;
+
+      @media screen and (max-width: 775px){
+        font-size: 40px;
+      }
+      @media screen and (max-width: 575px){
+        font-size: 36px;
+      }
+      @media screen and (max-width: 425px){
+        font-size: 32px;
+      }
+    }
+
+    .intro-wrap--text {
+      font-size: 18px;
+      font-weight: 400;
+      font-family: "Overpass", sans-serif;
+      letter-spacing: 2px;
+      padding-bottom: 20px;
+
+      @media screen and (max-width: 425px){
+        font-size: 16px;
+      }
+    }
+
+    & button {
+      background: transparent;
+      color: $white;
+      font-size: 18px;
+      font-weight: 400;
+      font-family: "Overpass", sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 15px 35px;
+      border: $white 3px solid;
+      margin-top: 20px;
+      transition: background 0.2s linear;
+      transition: transform 0.3s linear;
+
+      @media screen and (max-width: 575px){
+        font-size: 16px;
+        padding: 12px 34px;
+      }
+
+      @media screen and (max-width: 425px){
+        font-size: 14px;
+        padding: 10px 30px;
+      }
+    }
+
+    & button:hover{
+      background: rgb(0,0,0,0.2);
+      transition: background 0.2s linear;
+      transform: translate3d(0,-10px,0);
+      transition: transform 0.3s linear;
+    }
+  }
+}
+
+#about{
+  background-color: $white;
+  text-align: center;
+
+  .aboutTextStyle{
+    color: $gray;
+    font-style: normal;
+    font-family: Merriweather;
+    font-weight: 400;
+    font-size: 13px;
+    padding: 0 15px;
+
+    @media screen and (max-width: 425px){
+      padding: 0 30px;
+    }
+  }
+
+  .aboutHeadStyle{
+    text-transform: uppercase;
+    color: $gray;
+    font-style: 18px;
+    font-family: "Overpass", sans-serif;
+    font-style: normal;
+    padding: 20px 0;
+    margin: 0;
+  }
+
+  .about{
+    padding: 80px 0;
+
+    .about-bottom--icom{
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  .aboutUs{
+    background-color: #cccccc;
+    padding: 80px 0;
+
+    .aboutUsTextStyle{
+      text-align: left;
+      letter-spacing: 1px;
+
+      @media screen and (max-width: 425px){
+        text-align: center;
+      }
+    }
+
+    .aboutUsBottomWrap{
+      padding: 50px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .aboutUsBottomCard{
+        margin: 0 auto;
+
+        .aboutUsImg{
+          position: relative;
+        }
+
+        .aboutUsImg:hover .aboutUsImgCard img{
+          opacity: 0.4;
+        }
+
+        .aboutUsImgCard{
+          background: rgb(0,0,0,0.7);
+
+          & img{
+            width: 100%;
+            height: auto;
+            transition: opacity 0.3s linear;
+          }
+        }
+
+        .aboutUsImg:hover  .SocialNetworks{
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+
+        .SocialNetworks{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          transition: opacity 0.3s linear;
+
+          position: absolute;
+          width: 100%;
+          top: 75%;
+          left: 0;
+          z-index: 3 ;
+
+          & a {
+            padding: 0 10px;
+            transition: transform 0.5s linear;
+
+            :hover{
+              transform: translate3d(0,-10px,0);
+              transition: transform 0.5s linear;
+            }
+
+            & img{
+              width: 100%;
+              height: auto;
+            }
+          }
+        }
+
+        .aboutUsName{
+          .aboutUsNameStyle{
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 15px 0 5px 0;
+          }
+        }
+
+      }
+    }
+  }
+
+  .latestWorks{
+    padding: 80px 0;
+    display: flex;
+
+    .latestWorksNav{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      padding: 30px 0;
+
+      & li{
+        padding: 0 10px;
+
+        & a{
+          transition: color 0.2s linear ;
+
+          &:hover{
+            color: $red;
+            text-decoration: none;
+            transition: color 0.2s linear;
+          }
+
+          @media screen and (max-width: 425px){
+            font-size: 16px;
+            letter-spacing: 2px;
+          }
+        }
+
+        @media screen and (max-width: 425px){
+          padding: 8px 0;
+        }
+      }
+
+      @media screen and (max-width: 425px){
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .latestWorksCards{
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .latestWorksCardWrap{
+        position: relative;
+        transition: opacity 0.3s linear;
+        padding: 10px 0;
+
+        .latestWorksCardImg {
+          background: rgb(2404, 51, 51, 0.7);
+
+          & img{
+            transition: opacity 0.3s linear;
+            width: 100%;
+            height: auto;
+          }
+
+          &:hover img{
+            opacity: 0.2;
+            transition: opacity 0.3s linear;
+          }
+        }
+
+        .latestWorksCardText{
+          position: absolute;
+          top: 30%;
+          left: 0;
+          width: 100%;
+          z-index: 3;
+
+          opacity: 0;
+          color: $white;
+          font-family: "Overpass", sans-serif;
+          font-style: normal;
+          letter-spacing: 2px;
+
+          & h6{
+            font-size: 18px;
+          }
+
+          & p{
+            font-size: 13px;
+          }
+
+          & button{
+            background: $white;
+            border: none;
+            text-transform: uppercase;
+            font-size: 18px;
+            color: $red;
+            padding: 8px 20px;
+            transition: transform 0.3s linear;
+            margin: 10px 0;
+
+            &:hover{
+              transform: translate3d(10px, 0, 0);
+              transition: transform 0.3s linear;
+            }
+          }
+        }
+
+        &:hover .latestWorksCardText{
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+
+      }
+    }
+  }
+
+  .aboutInfoLine{
+    background: url("../img/Layer 29.png");
+    height: 50vh;
+
+    .aboutInfoLineWrap{
+      background-color: rgb(204, 51, 51, 0.7);
+      height: 100%;
+      color: $white;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      & h4{
+        font-size: 22px;
+        font-family: "Overpass", sans-serif;
+        letter-spacing: 1px;
+        line-height: 1.5em;
+        margin: 0 auto;
+        padding: 0 30px 40px;
+
+        @media screen and (max-width: 767px){
+          font-size: 20px;
+        }
+      }
+
+      & button{
+        background-color: transparent;
+        border: $white 3px solid;
+        padding: 10px 40px;
+        color: $white;
+        text-transform: uppercase;
+        font-size: 18px;
+        transition: color 0.2s linear;
+        transition: background-color 0.2s linear;
+
+        @media screen and (max-width: 767px){
+          padding: 7px 30px;
+          font-size: 15px;
+        }
+
+        &:hover{
+          background-color: $white;
+          color: $red;
+          transition: color 0.2s linear;
+          transition: background-color 0.2s linear;
+        }
+      }
+    }
+  }
+
+  .aboutBlog{
+    padding: 80px 0;
+
+    .aboutBlogWrap{
+
+      .aboutBlogInfoCard{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 30px 0;
+
+        .BlogTextWrap{
+          @media screen and (max-width: 1150px){
+            padding: 20px 0;
+          }
+
+          .BlogTextHead{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            & span{
+              border: $gray 2px solid;
+              padding: 23px 10px;
+              font-family: "Overpass", sans-serif;
+              font-size: 18px;
+              font-weight: 700;
+              color: $gray;
+            }
+
+            .BlogTextHeadRight{
+              padding-left: 20px;
+
+              .HeadRed{
+                color: $red;
+              }
+
+              & h6{
+                font-size: 16px;
+                font-family: "Overpass", sans-serif;
+                text-transform: uppercase;
+                color: $gray;
+                text-align: left;
+              }
+
+              & p{
+                text-align: left;
+                font-size: 14px;
+                padding-top: 0;
+                margin: 0;
+              }
+            }
+
+          }
+
+          & p{
+            text-align: left;
+            padding: 30px 0 0 0;
+
+            @media screen and (max-width: 425px){
+              text-align: center;
+              padding: 20px 0;
+            }
+          }
+
+          & a{
+            display: flex;
+            align-items: flex-start;
+            padding: 20px 10px;
+            font-family: "Overpass", sans-serif;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: $red;
+            transition: color 0.2s linear;
+
+            &:hover{
+              text-decoration: none;
+              color: $gray;
+              transition: color 0.2s linear;
+            }
+          }
+        }
+
+        & img{
+          width: 100%;
+          height: auto;
+
+          @media screen and (max-width: 991px){
+            width: 70%;
+            height: auto;
+            margin: 0 auto;
+          }
+
+          @media screen and (max-width: 575px){
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+
+  .partners{
+    height: 50vh;
+    background-color: #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $gray;
+    padding: 20px 0;
+
+    @media screen and (max-width: 767px){
+      height: 90vh;
+    }
+
+    .partnersImg{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding-bottom: 20px;
+      flex-wrap: wrap;
+
+      & span{
+        padding: 10px 20px;
+
+        @media screen and (max-width: 991px){
+          padding: 0;
+        }
+
+        @media screen and (max-width: 767px){
+          padding: 20px 0;
+        }
+
+        & img{
+          width: 100%;
+          height: auto;
+
+          @media screen and (max-width: 991px){
+            width: 80%;
+            height: auto;
+          }
+          @media screen and (max-width: 767px){
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+
+      @media screen and (max-width: 767px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    & p{
+      font-size: 18px;
+      font-family: "Overpass", sans-serif;
+      width: 65%;
+      margin: 0 auto;
+      padding-bottom: 30px;
+
+      @media screen and (max-width: 767px){
+        width: 90%;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .form{
+    padding: 80px 0;
+
+    .formAllWrap{
+      display: flex;
+      flex-wrap: wrap;
+
+      .formNavWrap{
+
+        @media screen and (max-width: 767px){
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .formNav{
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 20px 0;
+
+          @media screen and (max-width: 767px){
+           display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+
+          .formNavHead{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-bottom: 10px;
+            text-align: left;
+
+            .aboutHeadStyle{
+              margin: 0;
+              padding: 0 10px;
+              font-weight: 700;
+
+              @media screen and (max-width: 991px){
+                font-size: 14px;
+              }
+            }
+          }
+
+          .formLink{
+            color: $gray;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: "Overpass", sans-serif;
+            letter-spacing: 1px;
+            transition: color 0.2s linear;
+            padding-top: 5px;
+            text-align: left;
+
+            &:hover{
+              color: $red;
+              transition: color 0.2s linear;
+            }
+          }
+
+        }
+      }
+
+      .formWrap{
+
+        & input{
+          width: 45%;
+          padding: 15px;
+          outline: none;
+          margin: 15px 10px;
+
+          @media screen and (max-width: 767px){
+            width: 93%;
+          }
+        }
+
+        & textarea{
+          width: 93%;
+          margin: 15px 10px;
+          padding: 15px;
+          outline: none;
+        }
+
+        .formTextStyle{
+          font-weight: 400;
+          font-size: 14px;
+          font-family: "Overpass", sans-serif;
+          text-transform: uppercase;
+          color: $gray;
+          letter-spacing: 1px;
+
+          @media screen and (max-width: 425px){
+            font-size: 12px;
+          }
+        }
+
+        .formTextStyle:invalid {
+          border-color: red;
+        }
+
+        .ButtonStyle{
+          border: $gray 1px solid;
+          background-color: $white;
+          margin-left: 0 auto;@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        }
+      }
+    }
+  }
+}
+
+#footer{
+  height: 30vh;
+  background-color: $red;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+
+  text-align: center;
+  color: $white;
+  font-size: 13px;
+  font-family: "Overpass", sans-serif;
+  letter-spacing: 1px;
+
+  .footerPartners{
+    padding: 23px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    & span{
+      padding: 0 15px;
+    }
+  }
+
+  .footerPartners:after{
+    content: "";
+    border-radius: 30px;
+    display: inline-block;
+    width: 60px;
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: $white;
+  }
+
+  & p{
+    padding: 20px 0;
+  }
+}
